@@ -1,0 +1,6 @@
+.profile__image {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    padding: 3.75px 22.5px 3.75px 22.5px;
+}

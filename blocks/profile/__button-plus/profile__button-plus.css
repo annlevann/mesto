@@ -1,0 +1,11 @@
+.profile__button-plus {
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
+    width: 150px;
+    height: 50px;
+    background: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+
+}
