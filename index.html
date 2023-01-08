@@ -12,24 +12,43 @@
 <body class="page">
 <header class="header">
     <img class="header__logo" src="./images/logo.svg"  alt="логотип">
-    <img class="header__line" src="./images/Line.png" alt="линия">
+    <img class="header__line" src="./images/line.png" alt="линия">
 </header>
+
+
+
+
+
 
 <main>
     <section class="profile">
-        <div class="profile__ellipse">
-            <img class="profile__image" src="images/image.jpg" alt="жак-ив кусто">
-        </div>
+        <img class="profile__image" src="images/avatar.png" alt="жак-ив кусто">
         <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__edit-button">
+                <img class="profile__button" src="images/vector.svg" alt="кнопка">
+            </button>
             <h2 class="profile__subtitle">Исследователь океана</h2>
-            <button class="profile__edit-button">
-                <img class="profile__vector" src="images/Vector.png">
+
+        </div>
+        <button type="button" class="profile__add-button">
+            <img class="profile__button-plus" src="images/plus.svg" alt="кнопка с плюсом">
+        </button>
+    </section>
+
+
+
+
+
+
+    <section class="elements">
+            <img class="element__image" src="./images/karachaevsc.jpg" alt="карачаевск">
+        <div class="group">
+            <h2 class="group__title">Карачаевск</h2>
+            <button class="group__like">
+                <img src="./images/like.png" alt="лайк">
             </button>
         </div>
-        <button class="profile__button-plus">
-            <img class="plus" src="images/plus.png">
-        </button>
     </section>
 </main>
 </body>
