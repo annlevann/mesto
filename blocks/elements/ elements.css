@@ -1,6 +1,6 @@
 .elements {
-    display: grid;
-    margin: 0;
-    padding: 0;
-    gap: 17px;
+    max-width: 1184px;
+    min-width: 288px;
+    padding: 47.25px 200px 0 200px;
+    margin: auto;
 }

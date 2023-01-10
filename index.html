@@ -5,51 +5,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Путешествие по России</title>
+    <title>Место</title>
     <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
 <header class="header">
-    <img class="header__logo" src="./images/logo.svg"  alt="логотип">
+    <img class="header__logo" src="./images/logo.svg" alt="логотип">
     <img class="header__line" src="./images/line.png" alt="линия">
 </header>
-
-
-
-
-
 
 <main>
     <section class="profile">
         <img class="profile__image" src="images/avatar.png" alt="жак-ив кусто">
         <div class="profile__info">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__edit-button">
-                <img class="profile__button" src="images/vector.svg" alt="кнопка">
-            </button>
+            <div class="wrap">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <button type="button" class="profile__edit-button">
+                    <img class="profile__button" src="images/vector.svg" alt="кнопка">
+                </button>
+            </div>
             <h2 class="profile__subtitle">Исследователь океана</h2>
-
         </div>
         <button type="button" class="profile__add-button">
             <img class="profile__button-plus" src="images/plus.svg" alt="кнопка с плюсом">
         </button>
     </section>
 
-
-
-
-
-
     <section class="elements">
-            <img class="element__image" src="./images/karachaevsc.jpg" alt="карачаевск">
-        <div class="group">
-            <h2 class="group__title">Карачаевск</h2>
-            <button class="group__like">
-                <img src="./images/like.png" alt="лайк">
-            </button>
-        </div>
+        <ul class="element__list">
+            <li class="element__item">
+                <img class="element__image" src="./images/karachaevsc.jpg" alt="карачаевск">
+                <div class="wrapper">
+                    <h2 class="element__title">Карачаевск</h2>
+                    <button type="button" class="element__like">
+                        <img src="./images/like.svg" alt="лайк">
+                    </button>
+                </div>
+            </li>
+            <li class="element__item">
+                <img class="element__image" src="./images/gora-elbrus.jpg" alt="гора эльбрус">
+                <div class="wrapper">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button type="button" class="element__like">
+                        <img src="./images/like.svg" alt="лайк">
+                    </button>
+                </div>
+            </li>
+            <li class="element__item">
+                <img class="element__image" src="./images/dombai.jpg" alt="домбай">
+                <div class="wrapper">
+                    <h2 class="element__title">Домбай</h2>
+                    <button type="button" class="element__like">
+                        <img src="./images/like.svg" alt="лайк">
+                    </button>
+                </div>
+            </li>
+            <li class="element__item">
+                <img class="element__image" src="./images/gora-elbrus.jpg" alt="гора эльбрус">
+                <div class="wrapper">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button type="button" class="element__like">
+                        <img src="./images/like.svg" alt="лайк">
+                    </button>
+                </div>
+            </li>
+            <li class="element__item">
+                <img class="element__image" src="./images/dombai.jpg" alt="домбай">
+                <div class="wrapper">
+                    <h2 class="element__title">Домбай</h2>
+                    <button type="button" class="element__like">
+                        <img src="./images/like.svg" alt="лайк">
+                    </button>
+                </div>
+            </li>
+            <li class="element__item">
+                <img class="element__image" src="./images/karachaevsc.jpg" alt="карачаево-черкессия">
+                <div class="wrapper">
+                    <h2 class="element__title">Карачаево-Черкессия</h2>
+                    <button type="button" class="element__like">
+                        <img src="./images/like.svg" alt="лайк">
+                    </button>
+                </div>
+            </li>
+        </ul>
     </section>
+
+    <footer class="footer">
+        <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
 </main>
+
+<!--Попап-->
+<section class="popup">
+    <button class="popup__close">
+        <img src="./images/popup-close.svg" alt="попап-крестик">
+    </button>
+    <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <p class="popup__text">Жак-Ив Кусто</p>
+        <p class="popup__text">Исследователь океана</p>
+        <button class="popup__save">Сохранить</button>
+    </div>
+</section>
+
 </body>
+
 </html>
