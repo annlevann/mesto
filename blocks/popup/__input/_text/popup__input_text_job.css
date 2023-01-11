@@ -1,0 +1,15 @@
+.popup__input_text_job {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 358px;
+    margin-left: 36px;
+    padding-bottom: 13px;
+    padding-top: 30px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
