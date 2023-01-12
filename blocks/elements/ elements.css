@@ -1,6 +1,6 @@
 .elements {
-    max-width: 1184px;
-    min-width: 288px;
-    padding: 47.25px 200px 0 200px;
-    margin: auto;
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 50px;
 }

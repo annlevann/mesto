@@ -1,6 +1,8 @@
 .element__item {
-    width: 282px;
-    height: 361px;
-    background-color: white;
-    border-radius: 10px ;
+    display: block;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    overflow: hidden;
+    border-radius: 10px;
 }
