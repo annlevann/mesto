@@ -3,6 +3,18 @@
     margin: 0 auto;
     padding: 0;
     padding-top: 45px;
+    padding-bottom: 41px;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
-    padding-bottom: 39px;
+}
+
+@media screen and (max-width: 879px) {
+    .header {
+        max-width: 582px;
+    }
+}
+
+@media screen and (max-width: 616px) {
+    .header {
+        max-width: 282px;
+    }
 }

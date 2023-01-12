@@ -4,3 +4,16 @@
     margin: 0 auto;
     padding-top: 50px;
 }
+
+@media screen and (max-width: 879px) {
+    .elements {
+        max-width: 582px;
+    }
+}
+
+@media screen and (max-width: 616px) {
+    .elements {
+        max-width: 282px;
+        padding-top: 36px;
+    }
+}
