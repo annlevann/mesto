@@ -7,3 +7,9 @@
     background-color: #fff;
     color: #000;
 }
+
+@media screen and (max-width: 616px) {
+    .popup__container {
+        max-width: 282px;
+    }
+}

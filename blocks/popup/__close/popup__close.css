@@ -6,6 +6,16 @@
     height: 32px;
     padding: 0;
     position: absolute;
+    right: 30%;
     top: 155px;
-    right: 32%;
+}
+
+.popup__close:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 616px) {
+    .popup__close {
+
+    }
 }
