@@ -1,8 +1,6 @@
 .popup__save {
     display: block;
-    margin: 0 auto;
-    margin-bottom: 37px;
-    margin-top: 48px;
+    margin: 48px auto 37px;
     padding: 0;
     cursor: pointer;
     background-color: #000;
