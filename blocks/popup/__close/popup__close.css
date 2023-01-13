@@ -2,12 +2,13 @@
     cursor: pointer;
     background: url(../../../images/popup-close.svg) center no-repeat;
     border: none;
-    width: 32px;
-    height: 32px;
-    padding: 0;
     position: absolute;
-    right: 30%;
-    top: 155px;
+    max-width: 32px;
+    min-height: 32px;
+    width: 100%;
+    padding: 0;
+    right: -44px;
+    top: -44px;
 }
 
 .popup__close:hover {
@@ -16,6 +17,9 @@
 
 @media screen and (max-width: 616px) {
     .popup__close {
-
+        max-width: 20px;
+        min-height: 20px;
+        right: 0;
+        top: -35px;
     }
 }
