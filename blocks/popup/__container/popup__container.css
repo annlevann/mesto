@@ -1,8 +1,7 @@
 .popup__container {
-    display: grid;
+    max-width: 430px;
     margin: 0 auto;
     margin-top: 195px;
-    max-width: 430px;
     border-radius: 10px;
     background-color: #fff;
     color: #000;

@@ -1,0 +1,20 @@
+.profile__user-popup {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 0;
+  align-items: center;
+}
+
+@media screen and (max-width: 879px) {
+  .profile__user-popup {
+    max-width: 282px;
+  }
+}
+
+@media screen and (max-width: 616px) {
+  .profile__user-popup {
+    justify-content: center;
+  }
+}

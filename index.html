@@ -18,7 +18,7 @@
         <section class="profile container">
             <div class="profile__info">
                 <img class="profile__image" src="images/avatar.png" alt="жак-ив кусто">
-                <div class="wrap">
+                <div class="profile__user-popup">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
                     <button type="button" class="profile__edit-button"></button>
                     <h2 class="profile__subtitle">Исследователь океана</h2>
@@ -31,7 +31,7 @@
             <ul class="element__list">
                 <li class="element__item">
                     <img class="element__image" src="./images/karachaevsc.jpg" alt="карачаевск">
-                    <div class="wrapper">
+                    <div class="element__info">
                         <h2 class="element__title">Карачаевск</h2>
                         <button type="button" class="element__like">
                             <img src="./images/like.svg" alt="лайк">
@@ -40,7 +40,7 @@
                 </li>
                 <li class="element__item">
                     <img class="element__image" src="./images/gora-elbrus.jpg" alt="гора эльбрус">
-                    <div class="wrapper">
+                    <div class="element__info">
                         <h2 class="element__title">Гора Эльбрус</h2>
                         <button type="button" class="element__like">
                             <img src="./images/like.svg" alt="лайк">
@@ -49,7 +49,7 @@
                 </li>
                 <li class="element__item">
                     <img class="element__image" src="./images/dombai.jpg" alt="домбай">
-                    <div class="wrapper">
+                    <div class="element__info">
                         <h2 class="element__title">Домбай</h2>
                         <button type="button" class="element__like">
                             <img src="./images/like.svg" alt="лайк">
@@ -58,7 +58,7 @@
                 </li>
                 <li class="element__item">
                     <img class="element__image" src="./images/gora-elbrus.jpg" alt="гора эльбрус">
-                    <div class="wrapper">
+                    <div class="element__info">
                         <h2 class="element__title">Гора Эльбрус</h2>
                         <button type="button" class="element__like">
                             <img src="./images/like.svg" alt="лайк">
@@ -67,7 +67,7 @@
                 </li>
                 <li class="element__item">
                     <img class="element__image" src="./images/dombai.jpg" alt="домбай">
-                    <div class="wrapper">
+                    <div class="element__info">
                         <h2 class="element__title">Домбай</h2>
                         <button type="button" class="element__like">
                             <img src="./images/like.svg" alt="лайк">
@@ -76,7 +76,7 @@
                 </li>
                 <li class="element__item">
                     <img class="element__image" src="./images/karachaevsc.jpg" alt="карачаево-черкессия">
-                    <div class="wrapper">
+                    <div class="element__info">
                         <h2 class="element__title">Карачаево-Черкессия</h2>
                         <button type="button" class="element__like">
                             <img src="./images/like.svg" alt="лайк">
@@ -96,11 +96,11 @@
     <div class="popup__container">
         <button type="button" class="popup__close"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <div class="popup__input">
-            <input type="text" placeholder="Жак-Ив Кусто" class="popup__input popup__input_text_user">
-            <input type="text" placeholder="Исследователь океана" class="popup__input popup__input_text_job">
-            <button class="popup__save">Сохранить</button>
-        </div>
+        <form name="name" class="popup__action">
+            <input type="text" name="user" placeholder="Жак-Ив Кусто" class="popup__input popup__input_text_user">
+            <input type="text" name="job" placeholder="Исследователь океана" class="popup__input popup__input_text_job">
+            <button type="submit" class="popup__save">Сохранить</button>
+        </form>
     </div>
 </section>
 <script src="scripts/index.js"></script>

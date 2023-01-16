@@ -1,21 +1,2 @@
-.popup__input_text_user {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-width: 358px;
-    margin-left: 36px;
-    padding-bottom: 13px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
 
-@media screen and (max-width: 616px) {
-    .popup__input_text_user {
-        max-width: 238px;
-        margin-left: 22px;
-    }
-}
+
