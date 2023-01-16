@@ -18,3 +18,13 @@
     justify-content: center;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .profile__user-popup {
+    max-width: 248px;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 33px;
+  }
+}
