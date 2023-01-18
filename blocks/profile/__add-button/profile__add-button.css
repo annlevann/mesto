@@ -1,7 +1,7 @@
 .profile__add-button {
     margin: 0;
     padding: 0 64px 0 64px;
-    background: url(../../../images/plusik.svg) center no-repeat;
+    background: url(../../../images/vvector.svg) center no-repeat;
     width: 150px;
     height: 50px;
     cursor: pointer;
@@ -11,14 +11,13 @@
     justify-content: center;
 }
 
-
 .profile__add-button:hover {
     opacity: 0.6;
 }
 
 @media screen and (max-width: 616px) {
     .profile__add-button {
-        padding: 0 132px 0 132px;
-        width: 282px;
+      padding: 0 132px 0 132px;
+      width: 282px;
     }
 }

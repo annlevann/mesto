@@ -9,6 +9,9 @@ let userInputTitle = document.querySelector('.profile__title');
 let jobInputSubtitle = document.querySelector('.profile__subtitle');
 
 const openPopup = function() {
+  console.log('text');
+  console.log('text');
+  console.log('text');
   popupElement.classList.add('popup_opened');
 
   userInput.value = userInputTitle.textContent;
@@ -20,10 +23,15 @@ const closePopup = function() {
 }
 
 const SaveButton = function(evt) {
-  evt.preventDefault();
+  // evt.preventDefault();
 
-  userInputTitle.textContent = userInput.value;
-  jobInputSubtitle.textContent = jobInput.value;
+  console.log(userInput.value);
+  console.log(jobInput.value);
+
+  userInputTitle.value = userInput.value;
+  jobInputSubtitle.value  = jobInput.value;
+
+  closePopup();
 }
 
 popupOpenButtonElement.addEventListener('click', openPopup);
