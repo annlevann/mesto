@@ -29,62 +29,21 @@
 
   <section class="element">
     <ul class="element__list">
-      <li class="element__item">
-        <img class="element__image" src="./images/karachaevsc.jpg" alt="карачаевск">
-        <div class="element__info">
-          <h2 class="element__title">Карачаевск</h2>
-          <button type="button" class="element__like">
-            <img src="./images/like.svg" alt="лайк">
-          </button>
-        </div>
-      </li>
-      <li class="element__item">
-        <img class="element__image" src="./images/gora-elbrus.jpg" alt="гора эльбрус">
-        <div class="element__info">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" class="element__like">
-            <img src="./images/like.svg" alt="лайк">
-          </button>
-        </div>
-      </li>
-      <li class="element__item">
-        <img class="element__image" src="./images/dombai.jpg" alt="домбай">
-        <div class="element__info">
-          <h2 class="element__title">Домбай</h2>
-          <button type="button" class="element__like">
-            <img src="./images/like.svg" alt="лайк">
-          </button>
-        </div>
-      </li>
-      <li class="element__item">
-        <img class="element__image" src="./images/gora-elbrus.jpg" alt="гора эльбрус">
-        <div class="element__info">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" class="element__like">
-            <img src="./images/like.svg" alt="лайк">
-          </button>
-        </div>
-      </li>
-      <li class="element__item">
-        <img class="element__image" src="./images/dombai.jpg" alt="домбай">
-        <div class="element__info">
-          <h2 class="element__title">Домбай</h2>
-          <button type="button" class="element__like">
-            <img src="./images/like.svg" alt="лайк">
-          </button>
-        </div>
-      </li>
-      <li class="element__item">
-        <img class="element__image" src="./images/karachaevsc.jpg" alt="карачаево-черкессия">
-        <div class="element__info">
-          <h2 class="element__title">Карачаево-Черкессия</h2>
-          <button type="button" class="element__like">
-            <img src="./images/like.svg" alt="лайк">
-          </button>
-        </div>
-      </li>
     </ul>
   </section>
+
+  <template id="element-template">
+    <li class="element__item">
+      <button type="button" class="element__delete-button"></button>
+      <img class="element__image" src="" alt="">
+      <div class="element__info">
+        <h2 class="element__title"></h2>
+        <button type="button" class="element__like">
+          <img src="./images/like.svg" alt="лайк">
+        </button>
+      </div>
+    </li>
+  </template>
 
   <footer class="footer container">
     <p class="footer__copyright">© 2023 Mesto Russia</p>
@@ -103,6 +62,20 @@
     <button type="button" class="popup__close"></button>
   </div>
 </section>
+
+<!--2 Попап-->
+<section class="new-popup">
+  <div class="new-popup__container">
+    <h2 class="new-popup__title">Новое место</h2>
+    <form action="#" name="name" class="new-popup__action">
+      <input type="text" name="name" placeholder="Название" class="new-popup__input new-popup__input_text_name">
+      <input type="text" name="link" placeholder="Ссылка на картинку" class="new-popup__input new-popup__input_text_link">
+      <button type="submit" class="new-popup__save">Сохранить</button>
+    </form>
+    <button type="button" class="new-popup__close"></button>
+  </div>
+</section>
+
 <script src="scripts/index.js"></script>
 </body>
 
