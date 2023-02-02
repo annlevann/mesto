@@ -51,7 +51,7 @@
 </main>
 
 <!--Попап-->
-<section class="popup">
+<section class="popup profile-popup">
   <div class="popup__container">
     <h2 class="popup__title">Редактировать профиль</h2>
     <form action="#" name="name" class="popup__action">
@@ -64,15 +64,23 @@
 </section>
 
 <!--2 Попап-->
-<section class="new-popup">
-  <div class="new-popup__container">
-    <h2 class="new-popup__title">Новое место</h2>
-    <form action="#" name="name" class="new-popup__action">
-      <input type="text" name="name" placeholder="Название" class="new-popup__input new-popup__input_text_name">
-      <input type="text" name="link" placeholder="Ссылка на картинку" class="new-popup__input new-popup__input_text_link">
-      <button type="submit" class="new-popup__save">Сохранить</button>
+<section class="popup new-popup">
+  <div class="popup__container new-popup__container">
+    <h2 class="popup__title new-popup__title">Новое место</h2>
+    <form action="#" name="name" class="popup__action new-popup__action">
+      <input type="text" name="name" placeholder="Название" class="popup__input new-popup__input new-popup__input_text_name">
+      <input type="text" name="link" placeholder="Ссылка на картинку" class="popup__input new-popup__input new-popup__input_text_link">
+      <button type="submit" class="popup__save new-popup__save">Сохранить</button>
     </form>
-    <button type="button" class="new-popup__close"></button>
+    <button type="button" class="popup__close new-popup__close"></button>
+  </div>
+</section>
+
+<section class="popup popup_big-image">
+  <div class="popup__container popup__container-image">
+    <img class="popup__image" src="#" alt="">
+    <p class="popup__caption"></p>
+    <button type="button" class="popup__close popup__close-image"></button>
   </div>
 </section>
 
