@@ -8,130 +8,122 @@ const jobInput = document.querySelector('.popup__input_text_job');
 const userInputTitle = document.querySelector('.profile__title');
 const jobInputSubtitle = document.querySelector('.profile__subtitle');
 
-// image popup
-const imagePopup = document.querySelector('.popup_big-image')
-const imagePopupClose = imagePopup.querySelector('.popup__close')
-const popupContainerImage = document.querySelector('.popup__container-image')
 
+// Открытие любого попапа:
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
-
+// Закрытие любого попапа:
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-const openPopupOld = function() {
+//Открытие попапа через кнопку редактирования:
+const openPopupProfile = function() {
   openPopup(profilePopup)
-
   userInput.value = userInputTitle.textContent;
   jobInput.value = jobInputSubtitle.textContent;
 }
 
-function closePopupOld(){
+//Закрытие попапа через крестик:
+const closePopupProfile = function() {
   closePopup(profilePopup)
 }
 
-
-const formSubmit = function(evt) {
+// Обработчик «отправки» формы:
+const handleProfileFormSubmit = function(evt) {
   evt.preventDefault();
-
   userInputTitle.textContent = userInput.value;
   jobInputSubtitle.textContent = jobInput.value;
-
   closePopup(profilePopup);
 }
 
-profileOpenButton.addEventListener('click', openPopupOld);
-profileCloseButton.addEventListener('click', closePopupOld);
-profileForm.addEventListener('submit', formSubmit);
+profileOpenButton.addEventListener('click', openPopupProfile);
+profileCloseButton.addEventListener('click', closePopupProfile);
+profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 
-// new popup
-const newPopupElement = document.querySelector('.new-popup');
-const newPopupCloseButtonElement = newPopupElement.querySelector('.new-popup__close');
-const newPopupOpenButtonElement = document.querySelector('.profile__add-button');
-const newPopupSaveButtonElement = newPopupElement.querySelector('.new-popup__save')
-
-const newOpenPopup = function() {
-  openPopup(newPopupElement)
-}
-const newClosePopup = function() {
-  closePopup(newPopupElement)
-}
+// CARD POPUP:
+const cardPopupElement = document.querySelector('.new-popup');
+const cardPopupCloseButtonElement = cardPopupElement.querySelector('.new-popup__close');
+const cardPopupOpenButtonElement = document.querySelector('.profile__add-button');
+const cardPopupSaveButtonElement = cardPopupElement.querySelector('.new-popup__save')
 
 const popupAction = document.querySelector('.new-popup__action');
 const elementItemName = popupAction.querySelector('.new-popup__input_text_name');
 const elementItemLink = popupAction.querySelector('.new-popup__input_text_link');
 const elementList = document.querySelector('.element__list');
-const elementItemTemplate = document.querySelector('#element-template').content;
+const elementItemTemplate = document.querySelector('#element-template');
 
-const newSavePopup = function(evt) {
-  evt.preventDefault();
+const imagePopup = document.querySelector('.popup_big-image');
+const imagePopupClose = imagePopup.querySelector('.popup__close');
+const popupContainerImage = document.querySelector('.popup__container-image');
 
-  const element = {name: elementItemName.value, link: elementItemLink.value}
-
-  elementList.prepend(fillElement(element));
-
-  popupAction.querySelector('.new-popup__input_text_name').value = "";
-  popupAction.querySelector('.new-popup__input_text_link').value = "";
-
-  closePopup(newPopupElement)
+//Открытие попапа через кнопку добавления:
+const openPopupCard = function() {
+  openPopup(cardPopupElement)
 }
 
+//Закрытие попапа через крестик:
+const closePopupCard = function() {
+  closePopup(cardPopupElement)
+}
+
+//Нажимаем на кнопку "Сохранить":
+const handleCardFormSubmit = function(evt) {
+  evt.preventDefault();
+  const element = createElement(elementItemName.value, elementItemLink.value);
+  elementList.prepend(element);
+  evt.target.reset();
+  closePopup(cardPopupElement);
+}
 
 
 function closeImageModal() {
-
-
   closePopup(imagePopup)
 }
 
-const fillElement = (element) => {
-  const cardElement = elementItemTemplate.cloneNode(true);
-  cardElement.querySelector('.element__title').textContent = element.name;
-  cardElement.querySelector('.element__image').src = element.link;
-  cardElement.querySelector('.element__image').alt = element.alt;
+// Создание карточки:
+function createElement(name, link) {
+  const cardElement = elementItemTemplate.content.cloneNode(true);
+  const cardTitle = cardElement.querySelector('.element__title');
+  const image = cardElement.querySelector('.element__image')
+  cardTitle.textContent = name;
+  image.src = link;
+  image.alt = name;
 
+  //Лайк:
   const likeButton = cardElement.querySelector('.element__like');
   likeButton.addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__like-active');
   });
 
 
+//Удаление карточки:
   const deleteButton = cardElement.querySelector('.element__delete-button');
   const deleteCard = (evt) => {
     evt.target.closest('.element__item').remove();
   };
-
   deleteButton.addEventListener('click', deleteCard);
 
 
-
-  const image = cardElement.querySelector('.element__image')
-
-  const openImageModal = (evt) => {
-    popupContainerImage.querySelector('.popup__image').src = evt.target.src
-
-    const elementItem = evt.target.closest('.element__item')
-    const elementItemTitle = elementItem.querySelector('.element__title')
-
-    popupContainerImage.querySelector('.popup__caption').textContent = elementItemTitle.textContent
-
+//Открытие большой картинки:
+  image.addEventListener('click',function () {
     openPopup(imagePopup);
-  };
-
-  image.addEventListener('click',openImageModal )
+    popupContainerImage.src = link;
+    popupContainerImage.alt = name;
+    popupContainerImage.textContent = name;
+  });
 
   return cardElement;
-};
+}
 
 
-
-newPopupOpenButtonElement.addEventListener('click', newOpenPopup);
-newPopupCloseButtonElement.addEventListener('click', newClosePopup);
-newPopupSaveButtonElement.addEventListener('click', newSavePopup);
+cardPopupOpenButtonElement.addEventListener('click', openPopupCard);
+cardPopupCloseButtonElement.addEventListener('click', closePopupCard);
+cardPopupSaveButtonElement.addEventListener('submit', handleCardFormSubmit);
 imagePopupClose.addEventListener('click',closeImageModal)
+
 
 const initialCards = [
   {
@@ -160,8 +152,10 @@ const initialCards = [
   }
 ];
 
-initialCards.forEach((item) => {
-  elementList.append(fillElement(item));
+//Добавляем карточки в верстку:
+initialCards.forEach(card => {
+  const element = createElement(card.name, card.link);
+  elementList.append(element);
 });
 
 
