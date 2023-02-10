@@ -8,6 +8,8 @@ const jobInputSubtitle = document.querySelector('.profile__subtitle');
 
 const profilePopup = document.querySelector('.profile-popup');
 const imagePopup = document.querySelector('.popup_big-image');
+const imagePopupImage = imagePopup.querySelector('.popup__image');
+const imagePopupCaption = imagePopup.querySelector('.popup__caption');
 
 // CARD POPUP:
 const popupAction = document.querySelector('.new-popup__action');
@@ -64,13 +66,12 @@ function createElement(name, link) {
     evt.target.closest('.element__item').remove();
   });
 
-
   // Создание триггеров для открытия большой картинки:
   image.addEventListener('click',function (event) {
     openPopup(imagePopup);
-    imagePopup.querySelector('.popup__image').src = link;
-    imagePopup.querySelector('.popup__image').alt = name;
-    imagePopup.querySelector('.popup__caption').textContent = name;
+    imagePopupImage.src = link;
+    imagePopupImage.alt = name;
+    imagePopupCaption.textContent = name;
   });
   return cardElement;
 }
