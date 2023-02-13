@@ -82,15 +82,26 @@ initialCards.forEach(function (card){
   elementList.append(element);
 })
 
-// Открытие любого попапа:
+// Открытие любого попапа
 function openPopup(popup) {
+  document.addEventListener("keydown", closeByEsc);
   popup.classList.add('popup_opened');
 }
 
-// Закрытие любого попапа:
+// Закрытие любого попапа
 function closePopup(popup) {
+  document.addEventListener("keydown", closeByEsc);
   popup.classList.remove('popup_opened');
 }
+
+// Закрытие попапа нажатием на Esc
+function closeByEsc(event) {
+  if (event.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+
 
  // Проходимся в цикле по попапом и добавляем для них overlay
 const popupOverlay = Array.from(document.querySelectorAll('.popup'));
