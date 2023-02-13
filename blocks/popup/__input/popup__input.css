@@ -26,3 +26,7 @@
     margin-right: 22px;
   }
 }
+
+.popup__input.popup__input_type_error {
+  border-color: red;
+}

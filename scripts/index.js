@@ -92,6 +92,17 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+ // Проходимся в цикле по попапом и добавляем для них overlay
+const popupOverlay = Array.from(document.querySelectorAll('.popup'));
+popupOverlay.forEach(function (popupElement){
+  popupElement.addEventListener('mousedown', (event) => {
+    if (event.target.classList.contains('popup_opened')) {
+      closePopup(event.target);
+    }
+  })
+})
+
+
 // Открытие окна редактирования профиля
 const profileOpenButton = document.querySelector('.profile__edit-button');
 profileOpenButton.addEventListener('click', function (){

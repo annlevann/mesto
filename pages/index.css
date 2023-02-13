@@ -56,6 +56,9 @@
 @import url('../blocks/new-popup/__title/new-popup__title.css');
 
 
+@import url('../blocks/error/error.css');
+@import url('../blocks/popup/_disabled/popup__button_disabled.css');
+
 
 
 
