@@ -90,7 +90,7 @@ function openPopup(popup) {
 
 // Закрытие любого попапа
 function closePopup(popup) {
-  document.addEventListener("keydown", closeByEsc);
+  document.removeEventListener("keydown", closeByEsc);
   popup.classList.remove('popup_opened');
 }
 
@@ -104,8 +104,8 @@ function closeByEsc(event) {
 
 
  // Проходимся в цикле по попапом и добавляем для них overlay
-const popupOverlay = Array.from(document.querySelectorAll('.popup'));
-popupOverlay.forEach(function (popupElement){
+const closePopupOverlay = Array.from(document.querySelectorAll('.popup'));
+closePopupOverlay.forEach(function (popupElement){
   popupElement.addEventListener('mousedown', (event) => {
     if (event.target.classList.contains('popup_opened')) {
       closePopup(event.target);
