@@ -104,8 +104,8 @@ function closeByEsc(event) {
 
 
  // Проходимся в цикле по попапом и добавляем для них overlay
-const closePopupOverlay = Array.from(document.querySelectorAll('.popup'));
-closePopupOverlay.forEach(function (popupElement){
+const popups = Array.from(document.querySelectorAll('.popup'));
+popups.forEach(function (popupElement){
   popupElement.addEventListener('mousedown', (event) => {
     if (event.target.classList.contains('popup_opened')) {
       closePopup(event.target);

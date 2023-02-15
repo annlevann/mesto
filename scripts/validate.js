@@ -20,6 +20,9 @@ function enableValidation(config) {
 
 function enableFormValidation(form, config) {
   form.addEventListener("submit", disableSubmit);
+  form.addEventListener("input", () => {
+    toggleButton(form, config);
+  });
   form.addEventListener("reset", () => {
     setTimeout(() => {
       toggleButton(form, config);
