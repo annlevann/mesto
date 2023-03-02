@@ -1,3 +1,5 @@
+import Card from './Card.js';
+
 const elementItemTemplate = document.querySelector('#element-template');
 const elementList = document.querySelector('.element__list');
 
@@ -15,6 +17,8 @@ const imagePopupCaption = imagePopup.querySelector('.popup__caption');
 const popupAction = document.querySelector('.new-popup__action');
 const elementItemName = popupAction.querySelector('.new-popup__input_text_name');
 const elementItemLink = popupAction.querySelector('.new-popup__input_text_link');
+
+
 
 const initialCards = [
   {
@@ -43,47 +47,53 @@ const initialCards = [
   }
 ];
 
-// Создание карточки:
-function createElement(name, link) {
-  const cardElement = elementItemTemplate.content.cloneNode(true);
 
-  const cardTitle = cardElement.querySelector('.element__title');
-  cardTitle.textContent = name;
-
-  const image = cardElement.querySelector('.element__image');
-  image.src = link;
-  image.alt = name;
-
-  // Создание триггеров для лайков
-  const likeButton = cardElement.querySelector('.element__like');
-  likeButton.addEventListener('click', function(evt){
-    evt.target.classList.toggle('element__like-active');
-  });
-
-  // Создание триггеров для удаления
-  const deleteButton = cardElement.querySelector('.element__delete-button');
-  deleteButton.addEventListener('click', function(evt){
-    evt.target.closest('.element__item').remove();
-  });
-
-  // Создание триггеров для открытия большой картинки:
-  image.addEventListener('click',function (event) {
-    openPopup(imagePopup);
-    imagePopupImage.src = link;
-    imagePopupImage.alt = name;
-    imagePopupCaption.textContent = name;
-  });
-  return cardElement;
-}
+// // Создание карточки:
+// function createElement(name, link) {
+//   const cardElement = elementItemTemplate.content.cloneNode(true);
+//
+//   const cardTitle = cardElement.querySelector('.element__title');
+//   cardTitle.textContent = name;
+//
+//   const image = cardElement.querySelector('.element__image');
+//   image.src = link;
+//   image.alt = name;
+//
+//   // Создание триггеров для лайков
+//   const likeButton = cardElement.querySelector('.element__like');
+//   likeButton.addEventListener('click', function(evt){
+//     evt.target.classList.toggle('element__like-active');
+//   });
+//
+//   // Создание триггеров для удаления
+//   const deleteButton = cardElement.querySelector('.element__delete-button');
+//   deleteButton.addEventListener('click', function(evt){
+//     evt.target.closest('.element__item').remove();
+//   });
+//
+//   // Создание триггеров для открытия большой картинки:
+//   image.addEventListener('click',function (event) {
+//     openPopup(imagePopup);
+//     imagePopupImage.src = link;
+//     imagePopupImage.alt = name;
+//     imagePopupCaption.textContent = name;
+//   });
+//   return cardElement;
+// }
 
 // Проходимся в цикле по массиву с карточками и добавляем их в верстку
 initialCards.forEach(function (card){
-  const element = createElement(card.name, card.link);
-  elementList.append(element);
+  const cardTemplate = new Card(card, elementItemTemplate)
+
+  const cardItem = cardTemplate.generateCard()
+
+
+  // const element = createElement(card.name, card.link);
+  elementList.append(cardItem);
 })
 
 // Открытие любого попапа
-function openPopup(popup) {
+export function openPopup(popup) {
   document.addEventListener("keydown", closeByEsc);
   popup.classList.add('popup_opened');
 }
@@ -101,7 +111,6 @@ function closeByEsc(event) {
     closePopup(openedPopup);
   }
 }
-
 
  // Проходимся в цикле по попапом и добавляем для них overlay
 const popups = Array.from(document.querySelectorAll('.popup'));
@@ -138,7 +147,7 @@ profileForm.addEventListener('submit', function(evt){
   closePopup(profilePopup);
 });
 
-// Закрыть попас с картинкой
+// Закрыть попап с картинкой
 const imagePopupClose = imagePopup.querySelector('.popup__close');
 imagePopupClose.addEventListener('click',function (){
   closePopup(imagePopup)
@@ -157,7 +166,6 @@ const cardPopupCloseButtonElement = cardPopupElement.querySelector('.new-popup__
 cardPopupCloseButtonElement.addEventListener('click', function (){
   closePopup(cardPopupElement)
 });
-
 
 
 // Нажимаем на кнопку "Сохранить" при добавлении новой карточки
