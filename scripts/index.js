@@ -1,4 +1,6 @@
 import Card from './Card.js';
+import FormValidator, {validationConfig} from "./validate.js";
+
 
 const elementItemTemplate = document.querySelector('#element-template');
 const elementList = document.querySelector('.element__list');
@@ -90,9 +92,7 @@ const openPopupImageAndFill = function (link,name){
 
 // Проходимся в цикле по массиву с карточками и добавляем их в верстку
 initialCards.forEach(function (card){
-  const element = new Card(card, elementItemTemplate).generateCard(openPopupImageAndFill)
-
-  // const element = createElement(card.name, card.link);
+  const element = new Card(card, elementItemTemplate).generateCard(openPopupImageAndFill);
   elementList.append(element);
 })
 
@@ -177,10 +177,20 @@ const cardPopupSaveButtonElement = cardPopupElement.querySelector('.popup__actio
 cardPopupSaveButtonElement.addEventListener('submit', function (evt){
   evt.preventDefault();
 
-  const element = createElement(elementItemName.value, elementItemLink.value);
+  const cardContainer = {
+    "name":elementItemName.value,
+    "link":elementItemLink.value
+  }
+
+  // const element = createElement(elementItemName.value, elementItemLink.value);
+  const element = new Card(cardContainer, elementItemTemplate).generateCard(openPopupImageAndFill);
 
   elementList.prepend(element);
 
   evt.target.reset();
+
+  const formValidator = new FormValidator(validationConfig, popupAction);
+  formValidator.enableValidation();
+
   closePopup(cardPopupElement);
 });
