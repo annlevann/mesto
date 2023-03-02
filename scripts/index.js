@@ -83,13 +83,10 @@ const initialCards = [
 
 // Проходимся в цикле по массиву с карточками и добавляем их в верстку
 initialCards.forEach(function (card){
-  const cardTemplate = new Card(card, elementItemTemplate)
-
-  const cardItem = cardTemplate.generateCard()
-
+  const element = new Card(card, elementItemTemplate).generateCard()
 
   // const element = createElement(card.name, card.link);
-  elementList.append(cardItem);
+  elementList.append(element);
 })
 
 // Открытие любого попапа
