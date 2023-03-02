@@ -81,9 +81,16 @@ const initialCards = [
 //   return cardElement;
 // }
 
+const openPopupImageAndFill = function (link,name){
+  openPopup(imagePopup);
+  imagePopupImage.src = link;
+  imagePopupImage.alt = name;
+  imagePopupCaption.textContent = name;
+}
+
 // Проходимся в цикле по массиву с карточками и добавляем их в верстку
 initialCards.forEach(function (card){
-  const element = new Card(card, elementItemTemplate).generateCard()
+  const element = new Card(card, elementItemTemplate).generateCard(openPopupImageAndFill)
 
   // const element = createElement(card.name, card.link);
   elementList.append(element);
