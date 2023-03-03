@@ -1,5 +1,5 @@
 import Card from './Card.js';
-import FormValidator, {validationConfig} from "./validate.js";
+import FormValidator from "./validate.js";
 
 
 const elementItemTemplate = document.querySelector('#element-template');
@@ -20,6 +20,14 @@ const popupAction = document.querySelector('.new-popup__action');
 const elementItemName = popupAction.querySelector('.new-popup__input_text_name');
 const elementItemLink = popupAction.querySelector('.new-popup__input_text_link');
 
+const validationConfig = {
+  formSelector: ".popup__action",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "error",
+};
 
 
 const initialCards = [
@@ -124,8 +132,14 @@ popups.forEach(function (popupElement){
       closePopup(event.target);
     }
   })
-})
 
+  const popupActionElement  = popupElement.querySelector('.popup__action')
+  if (popupActionElement === null){
+    return
+  }
+  const addCardValidator = new FormValidator(validationConfig, popupActionElement);
+  addCardValidator.enableValidation();
+})
 
 // Открытие окна редактирования профиля
 const profileOpenButton = document.querySelector('.profile__edit-button');
@@ -189,8 +203,3 @@ cardPopupSaveButtonElement.addEventListener('submit', function (evt){
   closePopup(cardPopupElement);
 });
 
-const addCardValidator = new FormValidator(validationConfig, popupAction);
-addCardValidator.enableValidation();
-
-const editFormValidator = new FormValidator(validationConfig, profilePopup);
-editFormValidator.enableValidation();
