@@ -182,15 +182,15 @@ cardPopupSaveButtonElement.addEventListener('submit', function (evt){
     "link":elementItemLink.value
   }
 
-  // const element = createElement(elementItemName.value, elementItemLink.value);
   const element = new Card(cardContainer, elementItemTemplate).generateCard(openPopupImageAndFill);
-
   elementList.prepend(element);
-
   evt.target.reset();
-
-  const formValidator = new FormValidator(validationConfig, popupAction);
-  formValidator.enableValidation();
 
   closePopup(cardPopupElement);
 });
+
+const addCardValidator = new FormValidator(validationConfig, popupAction);
+addCardValidator.enableValidation();
+
+const editFormValidator = new FormValidator(validationConfig, profilePopup);
+editFormValidator.enableValidation();

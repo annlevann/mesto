@@ -11,14 +11,13 @@ export default class FormValidator {
   constructor(config, form) {
     this._config = config;
     this._form = form;
-
   }
 
 
-  enableValidation(config) {
-    this._formList = Array.from(document.querySelectorAll(config.formSelector));
+  enableValidation() {
+    this._formList = Array.from(document.querySelectorAll(this._config.formSelector));
     this._formList.forEach((form) => {
-      this._enableFormValidation(form, config);
+      this._enableFormValidation(form);
     });
   }
 
@@ -29,7 +28,7 @@ export default class FormValidator {
     });
     this._form.addEventListener("reset", () => {
       setTimeout(() => {
-        this._toggleButton(this._form, config);
+        this._toggleButton();
       }, 0);
     });
     this._addInputListeners(this._form, config);
@@ -40,28 +39,28 @@ export default class FormValidator {
     }
   }
 
-  _handleFormInput = (evt, config) => {
+  _handleFormInput = (evt) => {
     this._input = evt.target;
     this._inputId = this._input.id;
     this._errorElementVisible = document.querySelector(`#${this._inputId}-error`);
     if (this._input.validity.valid) {
-      this._input.classList.remove(config.inputErrorClass);
+      this._input.classList.remove(this._config.inputErrorClass);
       this._errorElementVisible.textContent = "";
     } else {
-      this._input.classList.add(config.inputErrorClass);
+      this._input.classList.add(this._config.inputErrorClass);
       this._errorElementVisible.textContent = this._input.validationMessage;
     }
   }
 
-  _toggleButton = (form, config) => {
-    this._buttonSubmit = form.querySelector(config.submitButtonSelector);
-    this._isFormValid = form.checkValidity();
+  _toggleButton = () => {
+    this._buttonSubmit = this._form.querySelector(this._config.submitButtonSelector);
+    this._isFormValid = this._form.checkValidity();
     this._buttonSubmit.disabled = !this._isFormValid;
-    this._buttonSubmit.classList.toggle(config.inactiveButtonClass, !this._isFormValid);
+    this._buttonSubmit.classList.toggle(this._config.inactiveButtonClass, !this._isFormValid);
   }
 
-  _addInputListeners = (form, config) => {
-    this._inputList = Array.from(form.querySelectorAll(this._config.inputSelector));
+  _addInputListeners = (userInput, config) => {
+    this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
     this._inputList.forEach ((item) => {
       item.addEventListener("input", (evt) => {
         this._handleFormInput(evt, config);
