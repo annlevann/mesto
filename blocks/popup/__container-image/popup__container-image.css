@@ -1,8 +1,6 @@
 .popup__container-image {
-  justify-content: center;
-  align-items: center;
-  max-width: 816px;
-  min-height: 540px;
+  margin: 0 auto;
+  padding: 0;
   position: relative;
 }
 

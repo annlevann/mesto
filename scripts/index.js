@@ -1,5 +1,5 @@
 import Card from './Card.js';
-import FormValidator from "./validate.js";
+import FormValidator from "./FormValidate.js";
 
 
 const elementItemTemplate = document.querySelector('#element-template');
