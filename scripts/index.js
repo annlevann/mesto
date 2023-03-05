@@ -98,9 +98,12 @@ const openPopupImageAndFill = function (link,name){
   imagePopupCaption.textContent = name;
 }
 
+
+
+
 // Проходимся в цикле по массиву с карточками и добавляем их в верстку
 initialCards.forEach(function (card){
-  const element = new Card(card, elementItemTemplate).generateCard(openPopupImageAndFill);
+  const element = new Card(card, elementItemTemplate,openPopupImageAndFill).generateCard();
   elementList.append(element);
 })
 
@@ -187,8 +190,8 @@ cardPopupCloseButtonElement.addEventListener('click', function (){
 
 
 // Нажимаем на кнопку "Сохранить" при добавлении новой карточки
-const cardPopupSaveButtonElement = cardPopupElement.querySelector('.popup__action')
-cardPopupSaveButtonElement.addEventListener('submit', function (evt){
+const cardPopupFormElement = cardPopupElement.querySelector('.popup__action')
+cardPopupFormElement.addEventListener('submit', function (evt){
   evt.preventDefault();
 
   const cardContainer = {
@@ -196,7 +199,7 @@ cardPopupSaveButtonElement.addEventListener('submit', function (evt){
     "link":elementItemLink.value
   }
 
-  const element = new Card(cardContainer, elementItemTemplate).generateCard(openPopupImageAndFill);
+  const element = new Card(cardContainer, elementItemTemplate,openPopupImageAndFill).generateCard(openPopupImageAndFill);
   elementList.prepend(element);
   evt.target.reset();
 
