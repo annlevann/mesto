@@ -10,7 +10,6 @@ export default class Card {
     return this._templateSelector
       .content
       .cloneNode(true);
-
   }
 
   // Создание карточки:
