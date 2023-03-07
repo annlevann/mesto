@@ -20,6 +20,9 @@ const popupAction = document.querySelector('.new-popup__action');
 const elementItemName = popupAction.querySelector('.new-popup__input_text_name');
 const elementItemLink = popupAction.querySelector('.new-popup__input_text_link');
 
+const formValidatorProfile = document.querySelector('#popup_one')
+
+
 const validationConfig = {
   formSelector: ".popup__action",
   inputSelector: ".popup__input",
@@ -136,12 +139,12 @@ popups.forEach(function (popupElement){
     }
   })
 
-  const popupActionElement  = popupElement.querySelector('.popup__action')
-  if (popupActionElement === null){
-    return
-  }
-  const addCardValidator = new FormValidator(validationConfig, popupActionElement);
-  addCardValidator.enableValidation();
+  // const popupActionElement  = popupElement.querySelector('.popup__action')
+  // if (popupActionElement === null){
+  //   return
+  // }
+  // const addCardValidator = new FormValidator(validationConfig, popupActionElement);
+  // addCardValidator.enableValidation();
 })
 
 // Открытие окна редактирования профиля
@@ -204,4 +207,11 @@ cardPopupFormElement.addEventListener('submit', function (evt){
 
   closePopup(cardPopupElement);
 });
+
+const validatorProfile = new FormValidator(validationConfig, formValidatorProfile);
+validatorProfile.enableValidation();
+
+const validatorCards = new FormValidator(validationConfig, popupAction);
+validatorCards.enableValidation();
+
 
