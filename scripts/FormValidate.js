@@ -47,3 +47,4 @@ export default class FormValidator {
     this._buttonSubmit.classList.toggle(this._config.inactiveButtonClass, !isFormValid);
   }
 }
+

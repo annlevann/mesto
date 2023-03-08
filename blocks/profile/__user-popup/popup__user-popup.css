@@ -1,6 +1,4 @@
 .profile__user-popup {
-  display: flex;
-  flex-wrap: wrap;
   max-width: 392px;
   margin: 0 auto;
   padding: 0;

@@ -214,4 +214,3 @@ validatorProfile.enableValidation();
 const validatorCards = new FormValidator(validationConfig, popupAction);
 validatorCards.enableValidation();
 
-

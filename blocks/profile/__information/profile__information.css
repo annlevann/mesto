@@ -1,3 +1,5 @@
-.popup__information {
-  
+.profile__information {
+  display: flex;
+  gap: 18px;
+  max-width: 336px;
 }
