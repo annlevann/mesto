@@ -32,6 +32,11 @@ const validationConfig = {
   errorClass: "error",
 };
 
+const validatorProfile = new FormValidator(validationConfig, formValidatorProfile);
+validatorProfile.enableValidation();
+
+const validatorCards = new FormValidator(validationConfig, popupAction);
+validatorCards.enableValidation();
 
 const initialCards = [
   {
@@ -59,40 +64,6 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-
-// // Создание карточки:
-// function createElement(name, link) {
-//   const cardElement = elementItemTemplate.content.cloneNode(true);
-//
-//   const cardTitle = cardElement.querySelector('.element__title');
-//   cardTitle.textContent = name;
-//
-//   const image = cardElement.querySelector('.element__image');
-//   image.src = link;
-//   image.alt = name;
-//
-//   // Создание триггеров для лайков
-//   const likeButton = cardElement.querySelector('.element__like');
-//   likeButton.addEventListener('click', function(evt){
-//     evt.target.classList.toggle('element__like-active');
-//   });
-//
-//   // Создание триггеров для удаления
-//   const deleteButton = cardElement.querySelector('.element__delete-button');
-//   deleteButton.addEventListener('click', function(evt){
-//     evt.target.closest('.element__item').remove();
-//   });
-//
-//   // Создание триггеров для открытия большой картинки:
-//   image.addEventListener('click',function (event) {
-//     openPopup(imagePopup);
-//     imagePopupImage.src = link;
-//     imagePopupImage.alt = name;
-//     imagePopupCaption.textContent = name;
-//   });
-//   return cardElement;
-// }
 
 const openPopupImageAndFill = function (link,name){
   openPopup(imagePopup);
@@ -138,13 +109,6 @@ popups.forEach(function (popupElement){
       closePopup(event.target);
     }
   })
-
-  // const popupActionElement  = popupElement.querySelector('.popup__action')
-  // if (popupActionElement === null){
-  //   return
-  // }
-  // const addCardValidator = new FormValidator(validationConfig, popupActionElement);
-  // addCardValidator.enableValidation();
 })
 
 // Открытие окна редактирования профиля
@@ -153,6 +117,7 @@ profileOpenButton.addEventListener('click', function (){
   openPopup(profilePopup)
   userInput.value = userInputTitle.textContent;
   jobInput.value = jobInputSubtitle.textContent;
+  validatorProfile.validateWhenOpen();
 });
 
 // закрыть редактирование профиля
@@ -180,7 +145,8 @@ imagePopupClose.addEventListener('click',function (){
 // Открытие попапа через кнопку добавления:
 const cardPopupOpenButtonElement = document.querySelector('.profile__add-button');
 cardPopupOpenButtonElement.addEventListener('click', function (){
-  openPopup(cardPopupElement)
+  openPopup(cardPopupElement);
+  validatorCards.validateWhenOpen();
 });
 
 
@@ -208,9 +174,5 @@ cardPopupFormElement.addEventListener('submit', function (evt){
   closePopup(cardPopupElement);
 });
 
-const validatorProfile = new FormValidator(validationConfig, formValidatorProfile);
-validatorProfile.enableValidation();
 
-const validatorCards = new FormValidator(validationConfig, popupAction);
-validatorCards.enableValidation();
 

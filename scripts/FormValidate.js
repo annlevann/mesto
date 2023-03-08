@@ -6,6 +6,13 @@ export default class FormValidator {
     this._buttonSubmit = this._form.querySelector(this._config.submitButtonSelector);
   }
 
+  validateWhenOpen(){
+    this._toggleButton()
+    this._inputList.forEach ((item) => {
+      this._hideInputError(item);
+    });
+  }
+
   enableValidation() {
     this._addInputListeners();
   }
@@ -25,6 +32,7 @@ export default class FormValidator {
     const errorElementVisible = document.querySelector(`#${input.id}-error`);
     errorElementVisible.textContent = input.validationMessage;
   }
+
   // Скрываем ошибку
   _hideInputError (input) {
     input.classList.remove(this._config.inputErrorClass);
