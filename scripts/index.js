@@ -73,12 +73,12 @@ const openPopupImageAndFill = function (link,name){
 }
 
 function createCard (card, templateSelector, openPopupImageAndFill) {
-  return new Card(card, elementItemTemplate,openPopupImageAndFill).generateCard();
+  return new Card(card, '#element-template',openPopupImageAndFill).generateCard();
 }
 
 // Проходимся в цикле по массиву с карточками и добавляем их в верстку
 initialCards.forEach(function (card){
-  elementList.append(createCard(card, elementItemTemplate,openPopupImageAndFill));
+  elementList.append(createCard(card, '#element-template',openPopupImageAndFill));
 })
 
 // Открытие любого попапа
@@ -168,7 +168,7 @@ cardPopupFormElement.addEventListener('submit', function (evt){
     "link":elementItemLink.value
   }
 
-  elementList.prepend(createCard(cardContainer, elementItemTemplate,openPopupImageAndFill));
+  elementList.prepend(createCard(cardContainer, '#element-template',openPopupImageAndFill));
   evt.target.reset();
 
   closePopup(cardPopupElement);
