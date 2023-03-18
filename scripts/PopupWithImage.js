@@ -1,17 +1,17 @@
-// import Popup from "./Popup.js";
-//
-// export default class PopupWithImage extends Popup {
-//   constructor({ card }, popupSelector) {
-//     super(popupSelector);
-//     this._imagePopup = document.querySelector('.popup_big-image');
-//     this._imagePopupImage = this._imagePopup.querySelector('.popup__image');
-//     this._imagePopupCaption = this._imagePopup.querySelector('.popup__caption');
-//   }
-//
-//   openPopup() {
-//     this._imagePopupImage.src = this._link;
-//     this._imagePopupImage.alt = this._name;
-//     this._imagePopupCaption.textContent = this._name;
-//     super.openPopup();
-//   }
-// }
+import Popup from "./Popup.js";
+
+export default class PopupWithImage extends Popup {
+  constructor( minePopup, popupSelector) {
+    super(popupSelector);
+    this._manePopup = minePopup;
+    this._imagePopupImage = document.querySelector('.popup__image');
+    this._imagePopupCaption = document.querySelector('.popup__caption');
+  }
+
+  openPopup(link, name) {
+    this._imagePopupImage.src = link;
+    this._imagePopupImage.alt = name;
+    this._imagePopupCaption.textContent = name;
+    super.openPopup();
+  }
+}
