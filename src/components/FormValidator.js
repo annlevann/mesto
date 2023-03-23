@@ -6,7 +6,7 @@ export default class FormValidator {
     this._buttonSubmit = this._form.querySelector(this._config.submitButtonSelector);
   }
 
-  validateWhenOpen(){
+  resetValidationState(){
     this._toggleButton()
     this._inputList.forEach ((item) => {
       this._hideInputError(item);

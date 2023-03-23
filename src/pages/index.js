@@ -1,17 +1,43 @@
-import Card from './scripts/Card.js';
-import FormValidator from "./scripts/FormValidate.js";
+import Card from '../components/Card.js';
+import FormValidator from "../components/FormValidator.js";
 
-import Section from "./scripts/Section.js";
-import Popup from "./scripts/Popup.js";
-import PopupWithForm from "./scripts/PopupWithForm.js";
-import PopupWithImage from "./scripts/PopupWithImage.js";
-import UserInfo from "./scripts/UserInfo.js";
+import Section from "../components/Section.js";
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
 
-import './pages/index.css';
+import './index.css';
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
 const elementList = document.querySelector('.element__list');
 
-const profilePopup = document.querySelector('.profile-popup');
 const userInput = document.querySelector('.popup__input_text_user');
 const jobInput = document.querySelector('.popup__input_text_job');
 
@@ -42,33 +68,6 @@ const validatorCards = new FormValidator(validationConfig, popupAction);
 validatorCards.enableValidation();
 
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const userInfo = new UserInfo({
   userNameSelector: '.profile__title',
   userJobSelector: '.profile__subtitle'
@@ -83,22 +82,22 @@ const cardSection = new Section({
   '.element__list');
 cardSection.renderItems();
 
-const bigImage = new PopupWithImage('.popup_big-image');
-bigImage.setEventListeners();
+const popupBigImage = new PopupWithImage('.popup_big-image');
+popupBigImage.setEventListeners();
 
 // Создаем экземпляр класса редактирования профиля
 const popupFormProfile = new PopupWithForm('.profile-popup',
-  (input) => {
-    userInfo.setUserInfo(input['user'], input['job']);
+  (inputValues) => {
+    userInfo.setUserInfo(inputValues['user'], inputValues['job']);
   });
 popupFormProfile.setEventListeners();
 
 // Создаем экземпляр класса добавления карточки
 const popupFormAddCard = new PopupWithForm('.new-popup',
-  (input) => {
+  (inputValues) => {
     cardSection.addItem(createCard({
-      name: input['name'],
-      link: input['link']
+      name: inputValues['name'],
+      link: inputValues['link']
     }, '#element-template', openPopupImageAndFill));
   })
 popupFormAddCard.setEventListeners();
@@ -107,38 +106,26 @@ popupFormAddCard.setEventListeners();
 // Открытие попапа добавления карточек:
 const cardPopupOpenButtonElement = document.querySelector('.profile__add-button');
 cardPopupOpenButtonElement.addEventListener('click', function () {
-  popupAddCard.openPopup();
-  validatorCards.validateWhenOpen();
+  popupFormAddCard.open()
+  validatorCards.resetValidationState();
 });
 
 // Открытие попапа редактирования профиля
 const profileOpenButton = document.querySelector('.profile__edit-button');
 profileOpenButton.addEventListener('click', function () {
-  popup.openPopup();
+  popupFormProfile.open();
   const userData = userInfo.getUserInfo()
   userInput.value = userData.name;
   jobInput.value = userData.job;
-  validatorProfile.validateWhenOpen();
+  validatorProfile.resetValidationState();
 });
 
 function openPopupImageAndFill(link, name) {
-  bigImage.openPopup(link, name)
+  popupBigImage.openPopup(link, name)
 }
 
 function createCard(card, templateSelector, openPopupImageAndFill) {
   return new Card(card, '#element-template', openPopupImageAndFill).generateCard();
 }
 
-const popup = new Popup('.profile-popup')
-popup.setEventListeners();
-
-const popupAddCard = new Popup('.new-popup')
-popupAddCard.setEventListeners();
-
-
-// Закрыть попап с большой картинкой
-const imagePopupClose = imagePopup.querySelector('.popup__close');
-imagePopupClose.addEventListener('click', function () {
-  bigImage.closePopup();
-})
 
